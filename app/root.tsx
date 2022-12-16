@@ -1,34 +1,34 @@
 import type { LinksFunction } from "@remix-run/node";
 import { Links, LiveReload, Outlet } from "@remix-run/react";
 
-import globalStylesUrl from './styles/global.css';
-import globalMediumStylesUrl from './styles/global-medium.css';
-import globalLargeStylesUrl from './styles/global-large.css';
+import globalStylesUrl from "./styles/global.css";
+import globalMediumStylesUrl from "./styles/global-medium.css";
+import globalLargeStylesUrl from "./styles/global-large.css";
 
 export const links: LinksFunction = () => {
   return [
     {
-      rel:'stylesheet',
+      rel: "stylesheet",
       href: globalStylesUrl,
     },
     {
-      rel: 'stylesheet',
+      rel: "stylesheet",
       href: globalMediumStylesUrl,
-      media: 'print, (min-width: 640px)',
+      media: "print, (min-width: 640px)",
     },
     {
-      rel: 'stylesheet',
+      rel: "stylesheet",
       href: globalLargeStylesUrl,
-      media: 'screen and (min-width: 1024px)',
+      media: "screen and (min-width: 1024px)",
     },
   ];
 };
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang='en'>
       <head>
-        <meta charSet="utf-8" />
+        <meta charSet='utf-8' />
         <title>Remix: So great, it's funny!</title>
       </head>
       <Links />
@@ -37,5 +37,5 @@ export default function App() {
         <LiveReload />
       </body>
     </html>
-  )
+  );
 }
