@@ -12,13 +12,13 @@ export const links: LinksFunction = () => [
 
 function validateUsername(username: unknown) {
   if (typeof username !== "string" || username.length < 3) {
-    return `Username must be at least 3 characters long`;
+    return `Usernames must be at least 3 characters long`;
   }
 }
 
 function validatePassword(password: unknown) {
   if (typeof password !== "string" || password.length < 6) {
-    return `Password must be at least 6 characters long`;
+    return `Passwords must be at least 6 characters long`;
   }
 }
 
@@ -39,7 +39,8 @@ export const action = async ({ request }: ActionArgs) => {
   if (
     typeof loginType !== "string" ||
     typeof username !== "string" ||
-    typeof password !== "string"
+    typeof password !== "string" ||
+    typeof redirectTo !== "string"
   ) {
     return badRequest({
       fieldErrors: null,
@@ -63,6 +64,9 @@ export const action = async ({ request }: ActionArgs) => {
 
   switch (loginType) {
     case "login": {
+      // login to get the user
+      // if there's no user, return the fields and a formError
+      // if there is a user, create their session and redirect to /jokes
       return badRequest({
         fieldErrors: null,
         fields,
@@ -80,6 +84,8 @@ export const action = async ({ request }: ActionArgs) => {
           formError: `User with username ${username} already exists`,
         });
       }
+      // create the user
+      // create their session and redirect to /jokes
       return badRequest({
         fieldErrors: null,
         fields,
