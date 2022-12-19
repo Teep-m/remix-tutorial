@@ -45,7 +45,9 @@ export const action = async ({ request }: ActionArgs) => {
     });
   }
 
-  const joke = await db.joke.create({ data: { ...fields, jokesterId: userId} });
+  const joke = await db.joke.create({
+    data: { ...fields, jokesterId: userId },
+  });
   return redirect(`/jokes/${joke.id}`);
 };
 
@@ -120,6 +122,14 @@ export default function NewJokeRoute() {
           </button>
         </div>
       </form>
+    </div>
+  );
+}
+
+export function ErrorBoundary() {
+  return (
+    <div className='error-container'>
+      Something unexpected went wrong. Sorry about that.
     </div>
   );
 }
