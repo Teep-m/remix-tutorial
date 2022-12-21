@@ -37,6 +37,7 @@ export default function JokesRoute() {
               to='/'
               title='Remix Jokes'
               aria-label='Remix Jokes'
+              prefetch="intent"
             >
               <span className='logo'>🤪</span>
               <span className='logo-medium'>J🤪KES</span>
@@ -58,25 +59,26 @@ export default function JokesRoute() {
               </Form>
             </div>
           ) : (
-            <Link to='/login'>Login</Link>
+            <Link to='/login' prefetch="intent">Login</Link>
           )}
         </div>
       </header>
       <main className='jokes-main'>
         <div className='container'>
           <div className='jokes-list'>
-            <Link to='.'>Get a random joke</Link>
+            <Link to='.' prefetch="intent">Get a random joke</Link>
             <p>Here are a few more jokes to check out:</p>
             <ul>
               {data.jokeListItems.map((joke) => (
                 <li key={joke.id}>
-                  <Link to={joke.id}>{joke.name}</Link>
+                  <Link to={joke.id} prefetch="intent">{joke.name}</Link>
                 </li>
               ))}
             </ul>
             <Link
               to='new'
               className='button'
+              prefetch="intent"
             >
               Add your own
             </Link>
